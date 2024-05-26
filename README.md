@@ -1,7 +1,6 @@
 # Underfrequency Load Shedding Implementation in PSSE
 
-## uploaded file's overview is here📜
- 🗂️[Project Structure](#project-structure)
+## Uploaded file's overview is here 🗂️[Project Structure](#project-structure)
 
 ## Abstract
 
