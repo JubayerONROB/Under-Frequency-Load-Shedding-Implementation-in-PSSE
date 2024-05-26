@@ -1,0 +1,33 @@
+@! MakeCnvSnp.idv
+MENU,OFF
+PDEV
+2,0,0
+IEEE24.log
+ODEV
+2,0,0
+IEEE24.log
+@! MakeCnv.idv
+CASE
+IEEE24_v33.sav
+//@input SCRIPTs\Vset_G31.idv
+//@input SCRIPTs\zsorce.idv
+@input   SCRIPTs\conl.idv
+CONG
+ORDR
+FACT
+TYSL
+TYSL
+SAVE
+IEEE24_cnv
+@! make snp file
+DYRE
+IEEE24.dyr
+conec.flx
+conet.flx
+,,,,
+compile.bat
+SNAP
+IEEE24
+, , , , ,
+stop
+@END

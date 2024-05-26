@@ -1,0 +1,30 @@
+@! RunFlat.idv
+MENU,OFF      /* 
+PDEV
+2,1,0
+ieee24.log
+ODEV
+2,1,0
+ieee24.log
+text
+text,***************************************
+text,*            RUN                      *
+text,*                                     *
+text,***************************************
+text
+CASE
+ieee24_cnv.sav
+RSTR
+ieee24.snp
+@input SCRIPTs\channels.idv
+@input SCRIPTs\Adjust_dynparam.idv
+STRT
+ieee24.out
+0
+RUN
+1,99,15,0
+@! @input EVENTs\sb2.idv
+RUN
+10,99,15,0
+STOP
+@END

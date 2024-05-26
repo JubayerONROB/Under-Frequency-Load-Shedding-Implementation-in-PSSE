@@ -1,0 +1,32 @@
+@! RunFlat.idv
+MENU,OFF      /* RunFlat.idv
+PDEV
+2,1,1
+IEEE24.log
+ODEV
+2,1,1
+IEEE24.log
+text
+text,***************************************
+text,*            RUN                      *
+text,*                                     *
+text,***************************************
+text
+CASE IEEE24_cnv
+RSTR IEEE24
+@input SCRIPTs\channels.idv
+@input SCRIPTs\Adjust_dynparam.idv
+@! BAT_SET_NETFRQ 1
+@! BAT_SET_OSSCAN 1 0
+@! BAT_SET_GENANG 1 150.0
+@! BAT_SET_GENPWR 1 1.10
+@! BAT_SET_VLTSCN 1 1.1  0.8
+@! BAT_SET_RELSCN 0
+BAT_SET_RELANG 1 1 1
+STRT
+IEEE24.out
+0
+RUN
+10,99,15,0
+stop
+@END

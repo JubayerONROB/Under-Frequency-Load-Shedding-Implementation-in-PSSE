@@ -1,0 +1,977 @@
+ ODEV
+ ODEV
+ 2,0,0
+ 2,0,0
+ IEEE24.log
+ IEEE24.log
+
+ @! MakeCnv.idv
+ CASE
+
+ IEEE24_v33.sav
+
+ IEEE 24 BUS
+ COMPILED BY J. CONTO
+
+ The Saved Case in file IEEE24_v33.sav was saved on THU, MAY 21 2015  15:38
+
+ //@input SCRIPTs\Vset_G31.idv
+ INVALID ACTIVITY
+
+ //@input SCRIPTs\zsorce.idv
+ INVALID ACTIVITY
+
+ @input   SCRIPTs\conl.idv
+ Dialogue input from file SCRIPTs\conl.idv
+ MENU,OFF  /Conl.idv - Convert Loads for Dynamic Studies
+
+ CONL, AREA
+ ENTER UP TO 20 AREA NUMBERS
+ 1              / Area 1
+ 50 50          / % constant I, % constant G for real power
+ 0  50          / % constant I, % constant B for reactive power
+
+ LOAD TO BE REPRESENTED AS:
+     ACTIVE REACTIVE
+      0.00%   50.00% CONSTANT POWER
+     50.00%    0.00% CONSTANT CURRENT
+     50.00%   50.00% CONSTANT ADMITTANCE
+ 1              / 1=ok
+
+ 9 loads converted during this step
+ ENTER UP TO 20 AREA NUMBERS
+ 2              / Area 2
+ 50 50          / % constant I, % constant G for real power
+ 0  50          / % constant I, % constant B for reactive power
+
+ LOAD TO BE REPRESENTED AS:
+     ACTIVE REACTIVE
+      0.00%   50.00% CONSTANT POWER
+     50.00%    0.00% CONSTANT CURRENT
+     50.00%   50.00% CONSTANT ADMITTANCE
+ 1              / 1=ok
+
+ 7 loads converted during this step
+ ENTER UP TO 20 AREA NUMBERS
+ 0              / END of areas entry
+
+ 16 of 16 loads converted
+
+
+ Response file operation terminated for file SCRIPTs\conl.idv
+ CONG
+
+ Generator conversion completed using ZSORCE
+
+ ORDR
+ Diagonals = 24   Off-diagonals = 52   Maximum size = 68
+
+ FACT
+
+ 24 diagonal and 52 off-diagonal elements
+
+ TYSL
+
+ ITER DELTAV/TOL X-------- AT BUS ---------X  REAL(DELTAV)  IMAG(DELTAV)
+    1     1.490       7 [BUS7        138.00]    0.5959E-05    0.1365E-04
+    2     0.074       7 [BUS7        138.00]    0.6879E-06   -0.2622E-06
+
+ Reached tolerance in 2 iterations
+
+ Largest mismatch:      0.00 MW      0.00 Mvar      0.00 MVA at bus 21 [BUS21       230.00]
+ System total absolute mismatch:                    0.00 MVA
+
+ TYSL
+
+ ITER DELTAV/TOL X-------- AT BUS ---------X  REAL(DELTAV)  IMAG(DELTAV)
+    1     0.001       8 [BUS8        138.00]   -0.9323E-08    0.6519E-08
+
+ Reached tolerance in 1 iterations
+
+ Largest mismatch:      0.00 MW      0.00 Mvar      0.00 MVA at bus 21 [BUS21       230.00]
+ System total absolute mismatch:                    0.00 MVA
+
+ SAVE
+ IEEE24_cnv
+
+ Case saved in file IEEE24_cnv.sav on FRI, OCT 08 2021  11:19
+
+ @! make snp file
+ DYRE
+ IEEE24.dyr
+ conec.flx
+ conet.flx
+
+ NEXT AVAILABLE ADDRESSES ARE:
+      CON   STATE     VAR    ICON
+        1       1       1       1
+ ,,,,
+ compile.bat
+ Out of file data--switch to terminal input mode
+
+ Generator models use:
+  CONS         1-    140
+  STATES       1-     60
+
+ Stabilizer models use:
+  CONS       141-    310
+  STATES      61-    220
+  VARS         1-     40
+  ICONS        1-     60
+
+ Excitation System models use:
+  CONS       311-    470
+  STATES     221-    270
+  VARS        41-     50
+
+ Turbine Governor models use:
+  CONS       471-    580
+  STATES     271-    320
+  VARS        51-     60
+
+
+ SUMMARY OF MODELS READ:
+
+ GENS:  GENROU
+          10
+
+ STABS: PSS2A
+          10
+
+ EXSYS: IEEEX1
+          10
+
+ GOVS:  IEESGO
+          10
+
+ NEXT AVAILABLE ADDRESSES ARE:
+     CON   STATE     VAR    ICON
+     581     321      61      61
+
+ Only PSS/E supplied models in case. Compilation is not required
+
+ SNAP
+ IEEE24
+
+ NUMBER OF ELEMENTS IN USE ARE:
+   CONS STATES   VARS  ICONS CHANNELS
+    580     320      60      60       0
+ , , , , ,
+
+ Snapshot at TIME = 0.0 saved in file IEEE24.snp on FRI, OCT 08 2021  11:19
+
+ stop
+ODEV
+ODEV
+2,1,1
+2,1,1
+IEEE24.log
+IEEE24.log
+
+ACTIVITY? : text
+
+ACTIVITY? : text,***************************************
+
+ACTIVITY? : text,*            RUN                      *
+
+ACTIVITY? : text,*                                     *
+
+ACTIVITY? : text,***************************************
+
+ACTIVITY? : text
+
+ACTIVITY? : CASE IEEE24_cnv
+
+IEEE 24 BUS
+COMPILED BY J. CONTO
+
+The Saved Case in file IEEE24_cnv.sav was saved on FRI, OCT 08 2021  11:19
+
+ACTIVITY? : RSTR IEEE24
+
+The Snapshot at TIME = 0.0 in file IEEE24.snp was saved on FRI, OCT 08 2021  11:19
+
+NUMBER OF ELEMENTS RESTORED:
+   CONS  STATES    VARS   ICONS  CHANNELS
+    580     320      60      60       0
+
+ACTIVITY? : @input SCRIPTs\channels.idv
+Dialogue input from file SCRIPTs\channels.idv
+// channels.idv
+INVALID ACTIVITY
+
+ACTIVITY? : @! add machine angles statistics
+BAT_CHSB, 0, 1, -1, -1, -1, 8, 0, 0 ;
+
+6 Output channels have been added
+
+
+Next available addresses are:
+  CHANNEL    VAR    ICON
+       7      67      61
+
+ACTIVITY? : @! add power totals for all buses
+BAT_CHSB, 0, 1, -1, -1, -1, 7, 0, 0 ;
+
+5 Output channels have been added
+
+
+Next available addresses are:
+  CHANNEL    VAR    ICON
+      12      72      62
+
+ACTIVITY? : @! add ANGLE chanels for subsystem 0
+BAT_CHSB, 0, 1, -1, -1, -1, 1, 1, 0 ;
+
+10 Output channels have been added
+
+
+Next available addresses are:
+  CHANNEL    VAR    ICON
+      22      72      62
+
+ACTIVITY? : @! add ETERM chanels for subsystem 0
+BAT_CHSB, 0, 1, -1, -1, -1, 1, 4, 0 ;
+
+10 Output channels have been added
+
+
+Next available addresses are:
+  CHANNEL    VAR    ICON
+      32      72      62
+
+ACTIVITY? : @! add PELEC chanels for subsystem 0
+BAT_CHSB, 0, 1, -1, -1, -1, 1, 2, 0 ;
+
+10 Output channels have been added
+
+
+Next available addresses are:
+  CHANNEL    VAR    ICON
+      42      72      62
+
+ACTIVITY? : @! add BUS FREQ chanels for subsystem 1
+BAT_CHSB, 1, 1, -1, -1, -1, 1, 12, 0 ;
+
+24 Output channels have been added
+
+
+Next available addresses are:
+  CHANNEL    VAR    ICON
+      66      72      62
+
+ACTIVITY? : @! add BUS VOLT chanels for subsystem 1
+BAT_CHSB, 1, 1, -1, -1, -1, 1, 13, 0 ;
+
+24 Output channels have been added
+
+
+Next available addresses are:
+  CHANNEL    VAR    ICON
+      90      96      86
+
+ACTIVITY? : 
+Response file operation terminated for file SCRIPTs\channels.idv
+@input SCRIPTs\Adjust_dynparam.idv
+Dialogue input from file SCRIPTs\Adjust_dynparam.idv
+MENU,OFF      /* Adjust_dynparam.idv
+
+ACTIVITY? : @! call from run.idv
+@! Change acceleration factors, step size
+altr
+TIME =    0.000
+
+ENTER CHANGE CODE:
+ 0 = NO MORE CHANGES      1 = OUTPUT CHANNEL DATA
+ 2 = CONS                 3 = VARS
+ 4 = CRT PLOT CHANNELS    5 = ICONS
+ 6 = SOLUTION PARAMETERS  7 = STATES
+ 8 = CASE HEADING: 6
+
+           X-NETWORK SOLUTION-X X-ISLAND FREQ-X
+  MAX ITER      ACC      TOL      ACC      TOL
+OLD:    25    1.000  0.00010    1.000  0.00050 CHANGE IT? : Y
+ENTER MAX ITER, ACC, TOL, IFACC, IFTOL: 99,0.8,,0.8,
+
+                                        X--DELT THRESHOLD--X
+ #CHANNELS  #STATES      DELT    FRTMCN INTERMED ISLAND FREQ
+OLD:    89        0   0.00833   0.03333   0.05000   0.11667 CHANGE IT? : Y
+ENTER #CHANS, #STATES, DELT, FREQ FILTER, INTERMED THRESH, ISLAND FREQ THRESH: ,,0.004,.016,,
+OUTPUT FILE IS '' CHANGE IT? : N
+
+NEXT AVAILABLE ADDRESSES ARE:
+         CON   STATE     VAR    ICON CHANNEL
+OLD:     581     321      96      86      90 CHANGE IT? : N
+
+ENTER CHANGE CODE:
+ 0 = NO MORE CHANGES      1 = OUTPUT CHANNEL DATA
+ 2 = CONS                 3 = VARS
+ 4 = CRT PLOT CHANNELS    5 = ICONS
+ 6 = SOLUTION PARAMETERS  7 = STATES
+ 8 = CASE HEADING: 0
+NETWORK DATA CHANGES (1=YES, 0=NO)? : 0
+
+ACTIVITY? : @END
+
+Response file operation terminated for file SCRIPTs\Adjust_dynparam.idv
+@! BAT_SET_NETFRQ 1
+@! BAT_SET_OSSCAN 1 0
+@! BAT_SET_GENANG 1 150.0
+@! BAT_SET_GENPWR 1 1.10
+@! BAT_SET_VLTSCN 1 1.1  0.8
+@! BAT_SET_RELSCN 0
+BAT_SET_RELANG 1 1 1
+
+ACTIVITY? : STRT
+ENTER CHANNEL OUTPUT FILENAME: IEEE24.out
+
+24 diagonal and 52 off-diagonal elements
+
+    PTI INTERACTIVE POWER SYSTEM SIMULATOR--PSS(R)E     FRI, OCT 08 2021  11:19
+IEEE 24 BUS
+COMPILED BY J. CONTO
+
+INITIAL CONDITION LOAD FLOW USED 1 ITERATIONS
+
+----------------------------- MACHINE INITIAL CONDITIONS -----------------------------
+  BUS# X-- NAME --X BASKV ID  ETERM   EFD    POWER    VARS   P.F.  ANGLE   ID     IQ
+     1 BUS1        138.00 1  1.0300 2.1998   75.94  105.48 0.5842  18.07 0.4781 0.1619
+     2 BUS2        138.00 1  1.0292 2.5451   66.99   50.00 0.8014  30.20 0.6181 0.2759
+     7 BUS7        138.00 1  0.9955 2.4797   63.99   50.00 0.7880  26.86 0.6281 0.2600
+    13 BUS13       230.00 1  1.0200 2.1119  200.00   58.26 0.9601  50.95 0.5763 0.3624
+    15 BUS15       230.00 1  1.0200 1.7389  250.00   -1.72 1.0000  70.56 0.5309 0.4567
+    16 BUS16       230.00 1  1.0200 1.9142  245.00   38.92 0.9876  60.53 0.5491 0.4258
+    18 BUS18       230.00 1  1.0300 2.0224  144.00    8.16 0.9984  71.62 0.6203 0.4696
+    21 BUS21       230.00 1  1.0400 1.9044  250.00   27.88 0.9938  67.96 0.5296 0.4440
+    22 BUS22       230.00 1  1.0500 2.0873  150.00    5.18 0.9994  78.15 0.6424 0.4669
+    23 BUS23       230.00 1  1.0250 1.8623  200.00    9.96 0.9988  61.92 0.5082 0.4072
+
+INITIAL CONDITIONS CHECK O.K.
+
+Channel output file is "IEEE24.out"
+ENTER SNAPSHOT FILENAME: 0
+
+ACTIVITY? : RUN
+AT TIME =  -0.008 ENTER TPAUSE, NPRT, NPLT, CRTPLT: 10,99,15,0
+
+Channel output file is "IEEE24.out"
+
+   TIME X- VALUE --X X--------- IDENTIFIER ---------X X- VALUE --X X--------- IDENTIFIER ---------X
+-0.0080   35.610     AVERAGE ANGLE                      60.078     LARGEST ANGLE
+    3     22.000     BUS WITH LARGEST ANGLE             0.0000     SMALLEST ANGLE
+    5     1.0000     BUS WITH SMALLEST ANGLE            60.078     ANGLE SPREAD
+    7     1645.9     PMECH FOR ALL BUSES                1645.9     PELEC FOR ALL BUSES
+    9    2.44141E-04 PACCL FOR ALL BUSES                1619.0     PLOAD FOR ALL BUSES
+   11     26.917     PE-PL FOR ALL BUSES                0.0000     ANGL     1[BUS1        138.00]1
+   13     12.129     ANGL     2[BUS2        138.00]1    8.7906     ANGL     7[BUS7        138.00]1
+   15     32.880     ANGL    13[BUS13       230.00]1    52.486     ANGL    15[BUS15       230.00]1
+   17     42.455     ANGL    16[BUS16       230.00]1    53.545     ANGL    18[BUS18       230.00]1
+   19     49.886     ANGL    21[BUS21       230.00]1    60.078     ANGL    22[BUS22       230.00]1
+   21     43.848     ANGL    23[BUS23       230.00]1    1.0300     ETRM     1[BUS1        138.00]1
+   23     1.0292     ETRM     2[BUS2        138.00]1   0.99553     ETRM     7[BUS7        138.00]1
+   25     1.0200     ETRM    13[BUS13       230.00]1    1.0200     ETRM    15[BUS15       230.00]1
+   27     1.0200     ETRM    16[BUS16       230.00]1    1.0300     ETRM    18[BUS18       230.00]1
+   29     1.0400     ETRM    21[BUS21       230.00]1    1.0500     ETRM    22[BUS22       230.00]1
+   31     1.0250     ETRM    23[BUS23       230.00]1   0.75937     POWR     1[BUS1        138.00]1
+   33    0.66994     POWR     2[BUS2        138.00]1   0.63991     POWR     7[BUS7        138.00]1
+   35     2.0000     POWR    13[BUS13       230.00]1    2.5000     POWR    15[BUS15       230.00]1
+   37     2.4500     POWR    16[BUS16       230.00]1    1.4400     POWR    18[BUS18       230.00]1
+   39     2.5000     POWR    21[BUS21       230.00]1    1.5000     POWR    22[BUS22       230.00]1
+   41     2.0000     POWR    23[BUS23       230.00]1    0.0000     FREQ      1 [BUS1        138.00]
+   43     0.0000     FREQ      2 [BUS2        138.00]   0.0000     FREQ      3 [BUS3        138.00]
+   45     0.0000     FREQ      4 [BUS4        138.00]   0.0000     FREQ      5 [BUS5        138.00]
+   47     0.0000     FREQ      6 [BUS6        138.00]   0.0000     FREQ      7 [BUS7        138.00]
+   49     0.0000     FREQ      8 [BUS8        138.00]   0.0000     FREQ      9 [BUS9        138.00]
+   51     0.0000     FREQ     10 [BUS10       138.00]   0.0000     FREQ     11 [BUS11       230.00]
+   53     0.0000     FREQ     12 [BUS12       230.00]   0.0000     FREQ     13 [BUS13       230.00]
+   55     0.0000     FREQ     14 [BUS14       230.00]   0.0000     FREQ     15 [BUS15       230.00]
+   57     0.0000     FREQ     16 [BUS16       230.00]   0.0000     FREQ     17 [BUS17       230.00]
+   59     0.0000     FREQ     18 [BUS18       230.00]   0.0000     FREQ     19 [BUS19       230.00]
+   61     0.0000     FREQ     20 [BUS20       230.00]   0.0000     FREQ     21 [BUS21       230.00]
+   63     0.0000     FREQ     22 [BUS22       230.00]   0.0000     FREQ     23 [BUS23       230.00]
+   65     0.0000     FREQ     24 [BUS24       230.00]   1.0300     VOLT      1 [BUS1        138.00]
+   67     1.0292     VOLT      2 [BUS2        138.00]  0.96050     VOLT      3 [BUS3        138.00]
+   69    0.97509     VOLT      4 [BUS4        138.00]  0.99165     VOLT      5 [BUS5        138.00]
+   71    0.97318     VOLT      6 [BUS6        138.00]  0.99553     VOLT      7 [BUS7        138.00]
+   73    0.97199     VOLT      8 [BUS8        138.00]  0.96522     VOLT      9 [BUS9        138.00]
+   75    0.97968     VOLT     10 [BUS10       138.00]   1.0025     VOLT     11 [BUS11       230.00]
+   77     1.0100     VOLT     12 [BUS12       230.00]   1.0200     VOLT     13 [BUS13       230.00]
+   79     1.0032     VOLT     14 [BUS14       230.00]   1.0200     VOLT     15 [BUS15       230.00]
+   81     1.0200     VOLT     16 [BUS16       230.00]   1.0286     VOLT     17 [BUS17       230.00]
+   83     1.0300     VOLT     18 [BUS18       230.00]   1.0161     VOLT     19 [BUS19       230.00]
+   85     1.0197     VOLT     20 [BUS20       230.00]   1.0400     VOLT     21 [BUS21       230.00]
+   87     1.0500     VOLT     22 [BUS22       230.00]   1.0250     VOLT     23 [BUS23       230.00]
+   89     1.0129     VOLT     24 [BUS24       230.00]
+
+ 0.3880   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9      2.44141E-04   1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.455       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      4.16362E-11
+   43    3.12970E-11  2.20088E-11  4.87803E-11  4.97716E-11  7.04684E-11  4.10521E-10
+   49    2.97840E-10  6.81391E-11  6.81391E-11  1.39275E-11  7.41779E-11  7.82536E-11
+   55   -2.81710E-21 -2.81710E-21 -2.81710E-21 -2.81710E-21 -5.63421E-21 -2.81710E-21
+   61    4.40176E-11 -5.63421E-21 -2.81710E-21  1.85699E-11  2.20088E-11   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 0.7840   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9      2.44141E-04   1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.456       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000     -2.09553E-19
+   43   -2.10793E-19 -9.13949E-20 -1.37189E-19 -1.52937E-19 -1.09490E-19 -4.55266E-20
+   49   -5.17508E-20 -7.16121E-20 -8.64344E-20 -7.90465E-20 -5.18464E-20 -4.44335E-20
+   55   -1.20467E-33 -1.20467E-33 -1.20467E-33 -1.20467E-33 -2.40934E-33 -1.20467E-33
+   61   -4.44482E-20 -2.40934E-33 -1.20467E-33 -7.90445E-20  1.21882E-19   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 1.1800   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9      2.44141E-04   1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.456       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000     -9.22664E-09
+   43   -8.93111E-09 -3.24724E-09 -5.84431E-09 -6.74086E-09 -4.96917E-09 -1.68879E-09
+   49   -2.30638E-09 -2.96498E-09 -3.92998E-09 -1.85281E-09 -2.68271E-09 -7.86075E-15
+   55   -2.47041E-09 -4.94082E-09 -1.00893E-43 -1.00893E-43 -1.03696E-43 -6.63247E-15
+   61   -7.81653E-10 -1.03696E-43 -1.00893E-43 -1.38961E-09 -8.64642E-09   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 1.5760   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9      2.44141E-04   1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.456       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000     -4.49187E-17
+   43   -3.67817E-17  8.49075E-17  4.03656E-18 -1.16672E-17  1.13616E-17  1.89261E-18
+   49    1.61114E-17  4.81778E-17  1.99755E-17  3.41594E-17  6.25905E-17  2.58500E-17
+   55    1.12945E-16  2.75746E-16  1.57570E-16  3.15141E-16  2.75748E-16  1.57570E-16
+   61    4.50665E-17  3.43180E-16  2.10094E-16  3.41602E-17  2.10093E-16   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+   TIME X- VALUE --X X--------- IDENTIFIER ---------X X- VALUE --X X--------- IDENTIFIER ---------X
+ 1.9720   35.610     AVERAGE ANGLE                      60.078     LARGEST ANGLE
+    3     22.000     BUS WITH LARGEST ANGLE             0.0000     SMALLEST ANGLE
+    5     1.0000     BUS WITH SMALLEST ANGLE            60.078     ANGLE SPREAD
+    7     1645.9     PMECH FOR ALL BUSES                1645.9     PELEC FOR ALL BUSES
+    9    2.44141E-04 PACCL FOR ALL BUSES                1619.0     PLOAD FOR ALL BUSES
+   11     26.917     PE-PL FOR ALL BUSES                0.0000     ANGL     1[BUS1        138.00]1
+   13     12.129     ANGL     2[BUS2        138.00]1    8.7906     ANGL     7[BUS7        138.00]1
+   15     32.880     ANGL    13[BUS13       230.00]1    52.486     ANGL    15[BUS15       230.00]1
+   17     42.455     ANGL    16[BUS16       230.00]1    53.545     ANGL    18[BUS18       230.00]1
+   19     49.886     ANGL    21[BUS21       230.00]1    60.078     ANGL    22[BUS22       230.00]1
+   21     43.848     ANGL    23[BUS23       230.00]1    1.0300     ETRM     1[BUS1        138.00]1
+   23     1.0292     ETRM     2[BUS2        138.00]1   0.99553     ETRM     7[BUS7        138.00]1
+   25     1.0200     ETRM    13[BUS13       230.00]1    1.0200     ETRM    15[BUS15       230.00]1
+   27     1.0200     ETRM    16[BUS16       230.00]1    1.0300     ETRM    18[BUS18       230.00]1
+   29     1.0400     ETRM    21[BUS21       230.00]1    1.0500     ETRM    22[BUS22       230.00]1
+   31     1.0250     ETRM    23[BUS23       230.00]1   0.75937     POWR     1[BUS1        138.00]1
+   33    0.66994     POWR     2[BUS2        138.00]1   0.63991     POWR     7[BUS7        138.00]1
+   35     2.0000     POWR    13[BUS13       230.00]1    2.5000     POWR    15[BUS15       230.00]1
+   37     2.4500     POWR    16[BUS16       230.00]1    1.4400     POWR    18[BUS18       230.00]1
+   39     2.5000     POWR    21[BUS21       230.00]1    1.5000     POWR    22[BUS22       230.00]1
+   41     2.0000     POWR    23[BUS23       230.00]1   2.11487E-10 FREQ      1 [BUS1        138.00]
+   43    2.07585E-10 FREQ      2 [BUS2        138.00]  1.04068E-10 FREQ      3 [BUS3        138.00]
+   45    1.35967E-10 FREQ      4 [BUS4        138.00]  1.54513E-10 FREQ      5 [BUS5        138.00]
+   47    1.10661E-10 FREQ      6 [BUS6        138.00]  3.43108E-11 FREQ      7 [BUS7        138.00]
+   49    4.81275E-11 FREQ      8 [BUS8        138.00]  8.47164E-11 FREQ      9 [BUS9        138.00]
+   51    1.08613E-10 FREQ     10 [BUS10       138.00]  9.29926E-11 FREQ     11 [BUS11       230.00]
+   53    6.24249E-11 FREQ     12 [BUS12       230.00]  1.05147E-10 FREQ     13 [BUS13       230.00]
+   55    1.07058E-12 FREQ     14 [BUS14       230.00]  3.08753E-12 FREQ     15 [BUS15       230.00]
+   57    8.80353E-11 FREQ     16 [BUS16       230.00]  4.96878E-14 FREQ     17 [BUS17       230.00]
+   59    6.61756E-13 FREQ     18 [BUS18       230.00]  2.78235E-10 FREQ     19 [BUS19       230.00]
+   61    1.05622E-12 FREQ     20 [BUS20       230.00]  1.46753E-28 FREQ     21 [BUS21       230.00]
+   63    8.98418E-29 FREQ     22 [BUS22       230.00]  3.30381E-11 FREQ     23 [BUS23       230.00]
+   65    2.09148E-12 FREQ     24 [BUS24       230.00]   1.0300     VOLT      1 [BUS1        138.00]
+   67     1.0292     VOLT      2 [BUS2        138.00]  0.96050     VOLT      3 [BUS3        138.00]
+   69    0.97509     VOLT      4 [BUS4        138.00]  0.99165     VOLT      5 [BUS5        138.00]
+   71    0.97318     VOLT      6 [BUS6        138.00]  0.99553     VOLT      7 [BUS7        138.00]
+   73    0.97199     VOLT      8 [BUS8        138.00]  0.96522     VOLT      9 [BUS9        138.00]
+   75    0.97968     VOLT     10 [BUS10       138.00]   1.0025     VOLT     11 [BUS11       230.00]
+   77     1.0100     VOLT     12 [BUS12       230.00]   1.0200     VOLT     13 [BUS13       230.00]
+   79     1.0032     VOLT     14 [BUS14       230.00]   1.0200     VOLT     15 [BUS15       230.00]
+   81     1.0200     VOLT     16 [BUS16       230.00]   1.0286     VOLT     17 [BUS17       230.00]
+   83     1.0300     VOLT     18 [BUS18       230.00]   1.0161     VOLT     19 [BUS19       230.00]
+   85     1.0197     VOLT     20 [BUS20       230.00]   1.0400     VOLT     21 [BUS21       230.00]
+   87     1.0500     VOLT     22 [BUS22       230.00]   1.0250     VOLT     23 [BUS23       230.00]
+   89     1.0129     VOLT     24 [BUS24       230.00]
+
+ 2.3680   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9      2.44141E-04   1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.455       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000     -9.26889E-19
+   43   -1.34179E-18 -3.78380E-18 -1.51287E-18 -1.30178E-18 -1.66045E-18  3.91989E-19
+   49   -5.81321E-19 -2.17599E-18 -2.32301E-18 -4.81168E-18 -1.51439E-18 -2.49558E-18
+   55   -3.24216E-18 -4.91327E-18 -5.84909E-18 -7.01896E-18 -1.36480E-17 -7.09682E-18
+   61   -2.20679E-18 -1.20459E-17 -7.79884E-18 -1.87171E-18 -7.48688E-18   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 2.7640   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9      2.44141E-04   1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.456       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000     -1.98578E-10
+   43   -1.98510E-10 -7.46524E-11 -1.37545E-10 -1.53158E-10 -1.13284E-10 -5.92441E-11
+   49   -4.98035E-11 -6.96581E-11 -7.26546E-11 -4.59661E-12 -6.43857E-11 -3.88863E-12
+   55   -2.30857E-12 -3.69528E-13 -2.50123E-30 -3.00149E-30 -5.83624E-30 -3.69440E-13
+   61   -1.99581E-12 -5.15113E-30 -3.33500E-30 -7.90359E-11 -1.58076E-10   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 3.1600   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.455       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66993      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      1.16751E-10
+   43    1.25519E-10  5.40086E-10  2.04924E-10  1.50670E-10  1.63359E-10  1.10383E-10
+   49    1.30017E-10  2.20951E-10  1.88206E-10  1.84457E-10  1.89447E-10  8.02287E-11
+   55    2.48977E-10  1.13033E-09  2.09338E-10  2.09559E-10  4.34742E-10  2.09853E-10
+   61    1.08084E-10  4.86911E-10  7.03316E-10  7.91775E-11  8.54558E-10   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 3.5560   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.455       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      4.41916E-13
+   43    4.54903E-13  1.94219E-13  3.00363E-13  3.25207E-13  2.33389E-13  8.70882E-14
+   49    1.56980E-13  1.57305E-13  1.80856E-13  9.24464E-14  1.04011E-13  7.85050E-14
+   55    1.53498E-13 -5.48098E-17 -5.83971E-17  1.56890E-13  2.79023E-13 -3.49456E-17
+   61    7.84800E-14 -1.02220E-16  1.01882E-17  7.84968E-14  2.09356E-13   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+   TIME X- VALUE --X X--------- IDENTIFIER ---------X X- VALUE --X X--------- IDENTIFIER ---------X
+ 3.9520   35.610     AVERAGE ANGLE                      60.078     LARGEST ANGLE
+    3     22.000     BUS WITH LARGEST ANGLE             0.0000     SMALLEST ANGLE
+    5     1.0000     BUS WITH SMALLEST ANGLE            60.078     ANGLE SPREAD
+    7     1645.9     PMECH FOR ALL BUSES                1645.9     PELEC FOR ALL BUSES
+    9    2.44141E-04 PACCL FOR ALL BUSES                1619.0     PLOAD FOR ALL BUSES
+   11     26.917     PE-PL FOR ALL BUSES                0.0000     ANGL     1[BUS1        138.00]1
+   13     12.129     ANGL     2[BUS2        138.00]1    8.7906     ANGL     7[BUS7        138.00]1
+   15     32.880     ANGL    13[BUS13       230.00]1    52.486     ANGL    15[BUS15       230.00]1
+   17     42.456     ANGL    16[BUS16       230.00]1    53.545     ANGL    18[BUS18       230.00]1
+   19     49.886     ANGL    21[BUS21       230.00]1    60.078     ANGL    22[BUS22       230.00]1
+   21     43.848     ANGL    23[BUS23       230.00]1    1.0300     ETRM     1[BUS1        138.00]1
+   23     1.0292     ETRM     2[BUS2        138.00]1   0.99553     ETRM     7[BUS7        138.00]1
+   25     1.0200     ETRM    13[BUS13       230.00]1    1.0200     ETRM    15[BUS15       230.00]1
+   27     1.0200     ETRM    16[BUS16       230.00]1    1.0300     ETRM    18[BUS18       230.00]1
+   29     1.0400     ETRM    21[BUS21       230.00]1    1.0500     ETRM    22[BUS22       230.00]1
+   31     1.0250     ETRM    23[BUS23       230.00]1   0.75936     POWR     1[BUS1        138.00]1
+   33    0.66993     POWR     2[BUS2        138.00]1   0.63991     POWR     7[BUS7        138.00]1
+   35     2.0000     POWR    13[BUS13       230.00]1    2.5000     POWR    15[BUS15       230.00]1
+   37     2.4500     POWR    16[BUS16       230.00]1    1.4400     POWR    18[BUS18       230.00]1
+   39     2.5000     POWR    21[BUS21       230.00]1    1.5000     POWR    22[BUS22       230.00]1
+   41     2.0000     POWR    23[BUS23       230.00]1   5.40227E-11 FREQ      1 [BUS1        138.00]
+   43    5.38631E-11 FREQ      2 [BUS2        138.00]  6.96747E-11 FREQ      3 [BUS3        138.00]
+   45    7.35878E-11 FREQ      4 [BUS4        138.00]  6.83173E-11 FREQ      5 [BUS5        138.00]
+   47    7.98321E-11 FREQ      6 [BUS6        138.00]  4.97040E-11 FREQ      7 [BUS7        138.00]
+   49    6.95428E-11 FREQ      8 [BUS8        138.00]  9.00860E-11 FREQ      9 [BUS9        138.00]
+   51    8.54104E-11 FREQ     10 [BUS10       138.00]  1.01161E-10 FREQ     11 [BUS11       230.00]
+   53    7.61502E-11 FREQ     12 [BUS12       230.00]  8.20279E-11 FREQ     13 [BUS13       230.00]
+   55    2.01532E-10 FREQ     14 [BUS14       230.00]  7.76047E-11 FREQ     15 [BUS15       230.00]
+   57    2.67751E-10 FREQ     16 [BUS16       230.00]  2.03012E-10 FREQ     17 [BUS17       230.00]
+   59    1.03771E-10 FREQ     18 [BUS18       230.00]  2.01598E-10 FREQ     19 [BUS19       230.00]
+   61    1.14709E-10 FREQ     20 [BUS20       230.00]  1.24357E-10 FREQ     21 [BUS21       230.00]
+   63    1.03494E-10 FREQ     22 [BUS22       230.00]  7.13429E-11 FREQ     23 [BUS23       230.00]
+   65    7.04697E-11 FREQ     24 [BUS24       230.00]   1.0300     VOLT      1 [BUS1        138.00]
+   67     1.0292     VOLT      2 [BUS2        138.00]  0.96050     VOLT      3 [BUS3        138.00]
+   69    0.97509     VOLT      4 [BUS4        138.00]  0.99165     VOLT      5 [BUS5        138.00]
+   71    0.97318     VOLT      6 [BUS6        138.00]  0.99553     VOLT      7 [BUS7        138.00]
+   73    0.97199     VOLT      8 [BUS8        138.00]  0.96522     VOLT      9 [BUS9        138.00]
+   75    0.97968     VOLT     10 [BUS10       138.00]   1.0025     VOLT     11 [BUS11       230.00]
+   77     1.0100     VOLT     12 [BUS12       230.00]   1.0200     VOLT     13 [BUS13       230.00]
+   79     1.0032     VOLT     14 [BUS14       230.00]   1.0200     VOLT     15 [BUS15       230.00]
+   81     1.0200     VOLT     16 [BUS16       230.00]   1.0286     VOLT     17 [BUS17       230.00]
+   83     1.0300     VOLT     18 [BUS18       230.00]   1.0161     VOLT     19 [BUS19       230.00]
+   85     1.0197     VOLT     20 [BUS20       230.00]   1.0400     VOLT     21 [BUS21       230.00]
+   87     1.0500     VOLT     22 [BUS22       230.00]   1.0250     VOLT     23 [BUS23       230.00]
+   89     1.0129     VOLT     24 [BUS24       230.00]
+
+ 4.3480   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.455       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      3.58117E-09
+   43    3.74941E-09  4.78276E-09  5.84283E-09  5.69423E-09  7.32707E-09  4.06780E-09
+   49    5.40080E-09  7.64155E-09  8.10660E-09  1.14015E-08  1.07070E-08  1.88173E-08
+   55    6.76224E-09  3.70724E-09  3.70980E-09  4.94298E-09  7.40360E-09  2.78328E-09
+   61    6.49678E-09  2.78051E-09  2.26062E-12  5.41497E-09  3.71150E-09   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 4.7440   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.916       0.0000
+   13     12.129       8.7906       32.880       52.486       42.455       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75936      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      7.05640E-12
+   43    7.39169E-12  2.46012E-12  4.69793E-12  5.26467E-12  3.79477E-12  1.42627E-12
+   49    2.39477E-12  2.79772E-12  3.05590E-12  3.26386E-12  1.09088E-12  1.40235E-15
+   55    2.47998E-12  4.01546E-16  2.78946E-12  8.63668E-16  2.24065E-16  1.85803E-15
+   61    1.39616E-12  4.39992E-16  3.68765E-16  3.14206E-15  2.78848E-12   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 5.1400   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.456       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      7.78214E-09
+   43    7.99747E-09  6.07396E-09  7.06523E-09  7.32014E-09  6.70063E-09  2.74721E-09
+   49    4.22983E-09  6.51639E-09  6.53614E-09  7.48765E-09  5.83996E-09  4.19890E-09
+   55    9.82093E-09  4.88946E-09  1.51485E-08  7.92293E-09  5.29995E-09  1.02821E-08
+   61    7.25072E-09  5.10585E-09  3.28271E-09  7.03554E-09  3.05002E-09   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 5.5360   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.455       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      6.11704E-10
+   43    5.87061E-10  2.97118E-10  4.17829E-10  4.54767E-10  3.40163E-10  1.15121E-10
+   49    1.92683E-10  2.36376E-10  2.55748E-10  2.81210E-10  2.06105E-10  5.46980E-11
+   55    1.14386E-10  1.75818E-10  1.03378E-10  1.74582E-10  1.86434E-10  1.09360E-10
+   61    5.27430E-11  6.78138E-10  1.70482E-10  1.41297E-10  1.97641E-10   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+   TIME X- VALUE --X X--------- IDENTIFIER ---------X X- VALUE --X X--------- IDENTIFIER ---------X
+ 5.9321   35.610     AVERAGE ANGLE                      60.078     LARGEST ANGLE
+    3     22.000     BUS WITH LARGEST ANGLE             0.0000     SMALLEST ANGLE
+    5     1.0000     BUS WITH SMALLEST ANGLE            60.078     ANGLE SPREAD
+    7     1645.9     PMECH FOR ALL BUSES                1645.9     PELEC FOR ALL BUSES
+    9     0.0000     PACCL FOR ALL BUSES                1619.0     PLOAD FOR ALL BUSES
+   11     26.917     PE-PL FOR ALL BUSES                0.0000     ANGL     1[BUS1        138.00]1
+   13     12.129     ANGL     2[BUS2        138.00]1    8.7906     ANGL     7[BUS7        138.00]1
+   15     32.880     ANGL    13[BUS13       230.00]1    52.486     ANGL    15[BUS15       230.00]1
+   17     42.456     ANGL    16[BUS16       230.00]1    53.545     ANGL    18[BUS18       230.00]1
+   19     49.886     ANGL    21[BUS21       230.00]1    60.078     ANGL    22[BUS22       230.00]1
+   21     43.848     ANGL    23[BUS23       230.00]1    1.0300     ETRM     1[BUS1        138.00]1
+   23     1.0292     ETRM     2[BUS2        138.00]1   0.99553     ETRM     7[BUS7        138.00]1
+   25     1.0200     ETRM    13[BUS13       230.00]1    1.0200     ETRM    15[BUS15       230.00]1
+   27     1.0200     ETRM    16[BUS16       230.00]1    1.0300     ETRM    18[BUS18       230.00]1
+   29     1.0400     ETRM    21[BUS21       230.00]1    1.0500     ETRM    22[BUS22       230.00]1
+   31     1.0250     ETRM    23[BUS23       230.00]1   0.75937     POWR     1[BUS1        138.00]1
+   33    0.66994     POWR     2[BUS2        138.00]1   0.63991     POWR     7[BUS7        138.00]1
+   35     2.0000     POWR    13[BUS13       230.00]1    2.5000     POWR    15[BUS15       230.00]1
+   37     2.4500     POWR    16[BUS16       230.00]1    1.4400     POWR    18[BUS18       230.00]1
+   39     2.5000     POWR    21[BUS21       230.00]1    1.5000     POWR    22[BUS22       230.00]1
+   41     2.0000     POWR    23[BUS23       230.00]1  -1.68978E-09 FREQ      1 [BUS1        138.00]
+   43   -1.73489E-09 FREQ      2 [BUS2        138.00] -4.79898E-10 FREQ      3 [BUS3        138.00]
+   45   -1.34217E-09 FREQ      4 [BUS4        138.00] -1.56026E-09 FREQ      5 [BUS5        138.00]
+   47   -1.51359E-09 FREQ      6 [BUS6        138.00] -8.76688E-10 FREQ      7 [BUS7        138.00]
+   49   -1.04171E-09 FREQ      8 [BUS8        138.00] -1.04362E-09 FREQ      9 [BUS9        138.00]
+   51   -1.64092E-09 FREQ     10 [BUS10       138.00] -9.76740E-10 FREQ     11 [BUS11       230.00]
+   53   -1.00090E-09 FREQ     12 [BUS12       230.00] -1.77199E-09 FREQ     13 [BUS13       230.00]
+   55   -2.03659E-09 FREQ     14 [BUS14       230.00]  1.07569E-10 FREQ     15 [BUS15       230.00]
+   57   -2.45528E-09 FREQ     16 [BUS16       230.00] -7.07261E-09 FREQ     17 [BUS17       230.00]
+   59   -8.52786E-09 FREQ     18 [BUS18       230.00] -4.59373E-09 FREQ     19 [BUS19       230.00]
+   61   -2.86468E-09 FREQ     20 [BUS20       230.00] -1.34300E-08 FREQ     21 [BUS21       230.00]
+   63   -8.85505E-09 FREQ     22 [BUS22       230.00] -2.11875E-09 FREQ     23 [BUS23       230.00]
+   65   -3.56019E-09 FREQ     24 [BUS24       230.00]   1.0300     VOLT      1 [BUS1        138.00]
+   67     1.0292     VOLT      2 [BUS2        138.00]  0.96050     VOLT      3 [BUS3        138.00]
+   69    0.97509     VOLT      4 [BUS4        138.00]  0.99165     VOLT      5 [BUS5        138.00]
+   71    0.97318     VOLT      6 [BUS6        138.00]  0.99553     VOLT      7 [BUS7        138.00]
+   73    0.97199     VOLT      8 [BUS8        138.00]  0.96522     VOLT      9 [BUS9        138.00]
+   75    0.97968     VOLT     10 [BUS10       138.00]   1.0025     VOLT     11 [BUS11       230.00]
+   77     1.0100     VOLT     12 [BUS12       230.00]   1.0200     VOLT     13 [BUS13       230.00]
+   79     1.0032     VOLT     14 [BUS14       230.00]   1.0200     VOLT     15 [BUS15       230.00]
+   81     1.0200     VOLT     16 [BUS16       230.00]   1.0286     VOLT     17 [BUS17       230.00]
+   83     1.0300     VOLT     18 [BUS18       230.00]   1.0161     VOLT     19 [BUS19       230.00]
+   85     1.0197     VOLT     20 [BUS20       230.00]   1.0400     VOLT     21 [BUS21       230.00]
+   87     1.0500     VOLT     22 [BUS22       230.00]   1.0250     VOLT     23 [BUS23       230.00]
+   89     1.0129     VOLT     24 [BUS24       230.00]
+
+ 6.3281   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.456       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66993      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      4.60113E-09
+   43    4.86493E-09  7.29549E-09  6.76303E-09  6.36349E-09  7.79112E-09  4.03476E-09
+   49    6.04085E-09  8.64001E-09  9.05087E-09  1.11354E-08  9.62038E-09  1.07277E-08
+   55    1.49294E-08  4.71350E-09  1.62005E-08  1.37944E-08  1.01941E-08  1.55787E-08
+   61    1.14101E-08  4.11372E-09  8.19767E-09  9.18230E-09  9.38867E-09   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 6.7241   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.485       42.456       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      7.58371E-09
+   43    7.77184E-09  2.64870E-09  5.04175E-09  5.58588E-09  4.08753E-09  1.15410E-09
+   49    2.17868E-09  3.36492E-09  3.21473E-09  3.05774E-09  2.32190E-09  1.04297E-09
+   55    7.83083E-10  4.48211E-12  1.79128E-12  2.74745E-12  2.99401E-12  1.91507E-12
+   61    1.39056E-09  2.78386E-09  2.67325E-12  8.47196E-13  2.78180E-09   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 7.1201   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.456       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75936      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      3.74573E-09
+   43    3.79976E-09  5.46326E-09  6.12925E-09  5.84201E-09  7.48516E-09  4.29739E-09
+   49    5.65606E-09  8.24093E-09  8.16427E-09  9.73767E-09  1.18796E-08  1.05947E-08
+   55    9.03959E-09  3.44162E-09  8.11998E-09  7.16885E-09  2.97239E-09  1.28326E-08
+   61    2.07849E-08  4.59035E-09  2.58198E-09  2.12776E-08  5.76584E-09   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 7.5161   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9     -2.44141E-04   1619.0       26.917       0.0000
+   13     12.129       8.7907       32.880       52.485       42.456       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      6.50009E-10
+   43    6.48190E-10  2.33701E-09  1.00558E-09  9.99631E-10  1.22479E-09 -2.85907E-09
+   49   -1.35532E-09  1.30294E-09  1.68560E-09  2.97051E-09  2.04238E-09  1.65512E-09
+   55    3.12631E-09  4.95244E-10  5.80201E-09  5.53098E-09  4.38651E-09  4.53883E-09
+   61    4.27663E-09  1.02982E-09  2.93679E-09  2.26860E-09  1.37517E-09   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+   TIME X- VALUE --X X--------- IDENTIFIER ---------X X- VALUE --X X--------- IDENTIFIER ---------X
+ 7.9121   35.610     AVERAGE ANGLE                      60.078     LARGEST ANGLE
+    3     22.000     BUS WITH LARGEST ANGLE             0.0000     SMALLEST ANGLE
+    5     1.0000     BUS WITH SMALLEST ANGLE            60.078     ANGLE SPREAD
+    7     1645.9     PMECH FOR ALL BUSES                1645.9     PELEC FOR ALL BUSES
+    9    2.44141E-04 PACCL FOR ALL BUSES                1619.0     PLOAD FOR ALL BUSES
+   11     26.917     PE-PL FOR ALL BUSES                0.0000     ANGL     1[BUS1        138.00]1
+   13     12.129     ANGL     2[BUS2        138.00]1    8.7907     ANGL     7[BUS7        138.00]1
+   15     32.880     ANGL    13[BUS13       230.00]1    52.486     ANGL    15[BUS15       230.00]1
+   17     42.456     ANGL    16[BUS16       230.00]1    53.545     ANGL    18[BUS18       230.00]1
+   19     49.886     ANGL    21[BUS21       230.00]1    60.078     ANGL    22[BUS22       230.00]1
+   21     43.848     ANGL    23[BUS23       230.00]1    1.0300     ETRM     1[BUS1        138.00]1
+   23     1.0292     ETRM     2[BUS2        138.00]1   0.99553     ETRM     7[BUS7        138.00]1
+   25     1.0200     ETRM    13[BUS13       230.00]1    1.0200     ETRM    15[BUS15       230.00]1
+   27     1.0200     ETRM    16[BUS16       230.00]1    1.0300     ETRM    18[BUS18       230.00]1
+   29     1.0400     ETRM    21[BUS21       230.00]1    1.0500     ETRM    22[BUS22       230.00]1
+   31     1.0250     ETRM    23[BUS23       230.00]1   0.75936     POWR     1[BUS1        138.00]1
+   33    0.66994     POWR     2[BUS2        138.00]1   0.63991     POWR     7[BUS7        138.00]1
+   35     2.0000     POWR    13[BUS13       230.00]1    2.5000     POWR    15[BUS15       230.00]1
+   37     2.4500     POWR    16[BUS16       230.00]1    1.4400     POWR    18[BUS18       230.00]1
+   39     2.5000     POWR    21[BUS21       230.00]1    1.5000     POWR    22[BUS22       230.00]1
+   41     2.0000     POWR    23[BUS23       230.00]1   1.10363E-10 FREQ      1 [BUS1        138.00]
+   43    1.03576E-10 FREQ      2 [BUS2        138.00]  7.31889E-10 FREQ      3 [BUS3        138.00]
+   45    1.97799E-10 FREQ      4 [BUS4        138.00]  1.34960E-10 FREQ      5 [BUS5        138.00]
+   47    1.63346E-10 FREQ      6 [BUS6        138.00]  1.30125E-10 FREQ      7 [BUS7        138.00]
+   49    1.61102E-10 FREQ      8 [BUS8        138.00]  2.54733E-10 FREQ      9 [BUS9        138.00]
+   51    1.75689E-10 FREQ     10 [BUS10       138.00]  3.08063E-10 FREQ     11 [BUS11       230.00]
+   53    1.54257E-10 FREQ     12 [BUS12       230.00]  1.22580E-10 FREQ     13 [BUS13       230.00]
+   55    3.35927E-10 FREQ     14 [BUS14       230.00]  1.50147E-09 FREQ     15 [BUS15       230.00]
+   57    3.17969E-10 FREQ     16 [BUS16       230.00]  3.93203E-10 FREQ     17 [BUS17       230.00]
+   59    5.74964E-10 FREQ     18 [BUS18       230.00]  3.29931E-10 FREQ     19 [BUS19       230.00]
+   61    1.61489E-10 FREQ     20 [BUS20       230.00]  9.63198E-10 FREQ     21 [BUS21       230.00]
+   63    3.78335E-10 FREQ     22 [BUS22       230.00]  1.88061E-10 FREQ     23 [BUS23       230.00]
+   65    1.23675E-09 FREQ     24 [BUS24       230.00]   1.0300     VOLT      1 [BUS1        138.00]
+   67     1.0292     VOLT      2 [BUS2        138.00]  0.96050     VOLT      3 [BUS3        138.00]
+   69    0.97509     VOLT      4 [BUS4        138.00]  0.99165     VOLT      5 [BUS5        138.00]
+   71    0.97318     VOLT      6 [BUS6        138.00]  0.99553     VOLT      7 [BUS7        138.00]
+   73    0.97199     VOLT      8 [BUS8        138.00]  0.96522     VOLT      9 [BUS9        138.00]
+   75    0.97968     VOLT     10 [BUS10       138.00]   1.0025     VOLT     11 [BUS11       230.00]
+   77     1.0100     VOLT     12 [BUS12       230.00]   1.0200     VOLT     13 [BUS13       230.00]
+   79     1.0032     VOLT     14 [BUS14       230.00]   1.0200     VOLT     15 [BUS15       230.00]
+   81     1.0200     VOLT     16 [BUS16       230.00]   1.0286     VOLT     17 [BUS17       230.00]
+   83     1.0300     VOLT     18 [BUS18       230.00]   1.0161     VOLT     19 [BUS19       230.00]
+   85     1.0197     VOLT     20 [BUS20       230.00]   1.0400     VOLT     21 [BUS21       230.00]
+   87     1.0500     VOLT     22 [BUS22       230.00]   1.0250     VOLT     23 [BUS23       230.00]
+   89     1.0129     VOLT     24 [BUS24       230.00]
+
+ 8.3081   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.455       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      8.29516E-09
+   43    8.35926E-09  9.02235E-09  6.77433E-09  6.92272E-09  5.91459E-09  3.31804E-09
+   49    4.05356E-09  5.79579E-09  5.28014E-09  4.27781E-09  4.91818E-09  3.11589E-09
+   55    6.48691E-09  9.46328E-09  5.88296E-09  1.56657E-08  1.76826E-08  8.56170E-09
+   61    3.83008E-09  2.17257E-08  1.75387E-08  1.89019E-09  1.08488E-08   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 8.7041   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9      2.44141E-04   1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.456       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75936      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000     -1.53889E-12
+   43   -1.61799E-12 -7.37850E-13 -1.07301E-12 -1.18064E-12 -9.15811E-13 -2.67356E-13
+   49   -4.50951E-13 -4.78810E-13 -8.62360E-13 -3.37382E-13 -1.96305E-13 -2.61222E-13
+   55   -9.05217E-14 -6.62886E-13 -2.84854E-14  5.41609E-15  1.60392E-14 -6.09930E-14
+   61   -1.94483E-13 -1.96887E-14  3.74340E-14 -2.13996E-14 -3.97783E-13   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 9.1001   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.917       0.0000
+   13     12.129       8.7907       32.880       52.486       42.456       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75936      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000     -1.39697E-11
+   43   -1.03217E-11  2.17573E-11 -1.39829E-13 -1.68217E-13 -4.75224E-13  1.09591E-11
+   49    3.23650E-12 -1.72301E-11  1.17452E-12  2.18369E-11  1.61334E-11  2.01601E-11
+   55    2.01656E-11  1.57344E-12  5.11252E-13 -1.27298E-10  9.94549E-15  5.11897E-13
+   61    5.09447E-12  6.96850E-15  6.77370E-15 -9.82121E-11  2.15598E-11   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ 9.4960   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.916       0.0000
+   13     12.129       8.7907       32.880       52.486       42.455       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75936      0.66994      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000     -1.98176E-09
+   43   -1.92508E-09 -8.46406E-10 -1.36953E-09 -1.51754E-09 -1.15361E-09  3.87114E-09
+   49    1.61684E-09 -9.40223E-10 -1.10891E-09 -1.74086E-09 -1.20648E-09 -1.48840E-09
+   55   -2.26583E-09 -1.25303E-09 -3.52546E-09 -1.45442E-09 -1.25770E-09 -1.94278E-09
+   61   -1.46590E-09 -7.09445E-10 -7.03316E-10 -9.09804E-10 -8.24198E-10   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+   TIME X- VALUE --X X--------- IDENTIFIER ---------X X- VALUE --X X--------- IDENTIFIER ---------X
+ 9.8920   35.610     AVERAGE ANGLE                      60.078     LARGEST ANGLE
+    3     22.000     BUS WITH LARGEST ANGLE             0.0000     SMALLEST ANGLE
+    5     1.0000     BUS WITH SMALLEST ANGLE            60.078     ANGLE SPREAD
+    7     1645.9     PMECH FOR ALL BUSES                1645.9     PELEC FOR ALL BUSES
+    9    2.44141E-04 PACCL FOR ALL BUSES                1619.0     PLOAD FOR ALL BUSES
+   11     26.917     PE-PL FOR ALL BUSES                0.0000     ANGL     1[BUS1        138.00]1
+   13     12.129     ANGL     2[BUS2        138.00]1    8.7906     ANGL     7[BUS7        138.00]1
+   15     32.880     ANGL    13[BUS13       230.00]1    52.486     ANGL    15[BUS15       230.00]1
+   17     42.455     ANGL    16[BUS16       230.00]1    53.545     ANGL    18[BUS18       230.00]1
+   19     49.886     ANGL    21[BUS21       230.00]1    60.078     ANGL    22[BUS22       230.00]1
+   21     43.848     ANGL    23[BUS23       230.00]1    1.0300     ETRM     1[BUS1        138.00]1
+   23     1.0292     ETRM     2[BUS2        138.00]1   0.99553     ETRM     7[BUS7        138.00]1
+   25     1.0200     ETRM    13[BUS13       230.00]1    1.0200     ETRM    15[BUS15       230.00]1
+   27     1.0200     ETRM    16[BUS16       230.00]1    1.0300     ETRM    18[BUS18       230.00]1
+   29     1.0400     ETRM    21[BUS21       230.00]1    1.0500     ETRM    22[BUS22       230.00]1
+   31     1.0250     ETRM    23[BUS23       230.00]1   0.75937     POWR     1[BUS1        138.00]1
+   33    0.66993     POWR     2[BUS2        138.00]1   0.63991     POWR     7[BUS7        138.00]1
+   35     2.0000     POWR    13[BUS13       230.00]1    2.5000     POWR    15[BUS15       230.00]1
+   37     2.4500     POWR    16[BUS16       230.00]1    1.4400     POWR    18[BUS18       230.00]1
+   39     2.5000     POWR    21[BUS21       230.00]1    1.5000     POWR    22[BUS22       230.00]1
+   41     2.0000     POWR    23[BUS23       230.00]1  -3.69466E-10 FREQ      1 [BUS1        138.00]
+   43   -3.82468E-10 FREQ      2 [BUS2        138.00] -1.44420E-10 FREQ      3 [BUS3        138.00]
+   45   -2.54760E-10 FREQ      4 [BUS4        138.00] -2.69944E-10 FREQ      5 [BUS5        138.00]
+   47   -2.05183E-10 FREQ      6 [BUS6        138.00] -1.86891E-10 FREQ      7 [BUS7        138.00]
+   49   -2.11840E-10 FREQ      8 [BUS8        138.00] -1.29550E-10 FREQ      9 [BUS9        138.00]
+   51   -2.20354E-10 FREQ     10 [BUS10       138.00] -5.53152E-11 FREQ     11 [BUS11       230.00]
+   53   -1.14197E-10 FREQ     12 [BUS12       230.00] -1.64340E-10 FREQ     13 [BUS13       230.00]
+   55   -6.46762E-11 FREQ     14 [BUS14       230.00] -4.96330E-13 FREQ     15 [BUS15       230.00]
+   57   -4.95824E-12 FREQ     16 [BUS16       230.00] -2.10203E-15 FREQ     17 [BUS17       230.00]
+   59   -7.35009E-18 FREQ     18 [BUS18       230.00] -1.17243E-10 FREQ     19 [BUS19       230.00]
+   61   -1.06206E-10 FREQ     20 [BUS20       230.00] -6.60265E-11 FREQ     21 [BUS21       230.00]
+   63   -1.57522E-15 FREQ     22 [BUS22       230.00] -2.48405E-11 FREQ     23 [BUS23       230.00]
+   65   -4.95270E-11 FREQ     24 [BUS24       230.00]   1.0300     VOLT      1 [BUS1        138.00]
+   67     1.0292     VOLT      2 [BUS2        138.00]  0.96050     VOLT      3 [BUS3        138.00]
+   69    0.97509     VOLT      4 [BUS4        138.00]  0.99165     VOLT      5 [BUS5        138.00]
+   71    0.97318     VOLT      6 [BUS6        138.00]  0.99553     VOLT      7 [BUS7        138.00]
+   73    0.97199     VOLT      8 [BUS8        138.00]  0.96522     VOLT      9 [BUS9        138.00]
+   75    0.97968     VOLT     10 [BUS10       138.00]   1.0025     VOLT     11 [BUS11       230.00]
+   77     1.0100     VOLT     12 [BUS12       230.00]   1.0200     VOLT     13 [BUS13       230.00]
+   79     1.0032     VOLT     14 [BUS14       230.00]   1.0200     VOLT     15 [BUS15       230.00]
+   81     1.0200     VOLT     16 [BUS16       230.00]   1.0286     VOLT     17 [BUS17       230.00]
+   83     1.0300     VOLT     18 [BUS18       230.00]   1.0161     VOLT     19 [BUS19       230.00]
+   85     1.0197     VOLT     20 [BUS20       230.00]   1.0400     VOLT     21 [BUS21       230.00]
+   87     1.0500     VOLT     22 [BUS22       230.00]   1.0250     VOLT     23 [BUS23       230.00]
+   89     1.0129     VOLT     24 [BUS24       230.00]
+
+10.0000   35.610       60.078       22.000       0.0000       1.0000       60.078
+    7     1645.9       1645.9       0.0000       1619.0       26.917       0.0000
+   13     12.129       8.7906       32.880       52.486       42.455       53.545
+   19     49.886       60.078       43.848       1.0300       1.0292      0.99553
+   25     1.0200       1.0200       1.0200       1.0300       1.0400       1.0500
+   31     1.0250      0.75937      0.66993      0.63991       2.0000       2.5000
+   37     2.4500       1.4400       2.5000       1.5000       2.0000      5.35421E-10
+   43    8.00791E-10  6.94742E-10  9.06996E-10  1.06260E-09  1.18446E-09  7.52695E-09
+   49    4.87318E-09  1.07110E-09  1.74656E-09 -2.34153E-14  5.21054E-10  1.04213E-09
+   55   -2.73778E-14 -2.10099E-16 -2.09885E-15 -8.89803E-19 -3.11134E-21 -4.96298E-14
+   61    1.04216E-09 -2.79494E-14 -6.66798E-19 -1.05151E-14 -2.09651E-14   1.0300
+   67     1.0292      0.96050      0.97509      0.99165      0.97318      0.99553
+   73    0.97199      0.96522      0.97968       1.0025       1.0100       1.0200
+   79     1.0032       1.0200       1.0200       1.0286       1.0300       1.0161
+   85     1.0197       1.0400       1.0500       1.0250       1.0129
+
+ACTIVITY? : stop

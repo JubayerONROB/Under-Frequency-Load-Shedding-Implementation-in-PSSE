@@ -1,0 +1,24 @@
+@! Start.idv
+MENU,OFF      /* RunFlat.idv - 07sum1 flat start
+PDEV
+2,1,1
+work.err
+ODEV
+2,1,1
+work.err
+text
+text,***************************************
+text,*            START                    *
+text,*                                     *
+text,***************************************
+text
+LOFL
+CASE
+work\work.cnv
+RTRN,FACT
+RSTR
+work\work.snp
+@input SCRIPTs\Adjust_dynparam.idv
+STRT
+work\work.out
+0

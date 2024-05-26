@@ -1,0 +1,21 @@
+MENU,OFF      /* Creates the 2007 Flat Start SNAP work\ files
+PDEV
+2,1,0
+IEEE24.log
+ODEV
+2,1,0
+IEEE24.log
+CASE
+IEEE24_cnv
+DYRE
+IEEE24.dyr
+conec.flx
+conet.flx
+,,,,
+compile.bat
+SNAP
+IEEE24
+, , , , ,
+ECHO
+stop
+@END

@@ -1,0 +1,14 @@
+MENU,OFF      /* Adjust_dynparam.idv
+@! call from run.idv
+@! Change acceleration factors, step size
+altr
+6
+Y
+99,0.8,,0.8,
+Y
+,,0.004,.016,,
+N
+N
+0
+0
+@END

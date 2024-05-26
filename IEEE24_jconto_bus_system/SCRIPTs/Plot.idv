@@ -1,0 +1,28 @@
+@! Plot.idv
+MENU,OFF      /* Plot.idv: ID worst angle deviations
+PDEV
+2,1,1
+ieee24.err
+ODEV
+2,1,1
+ieee24.err
+text
+text,***************************************
+text,*            PLOT                     *
+text,***************************************
+text
+CHNF
+ieee24_cnv.out
+RANG
+1
+
+SCAN
+5
+4
+1 999
+
+12
+
+
+ECHO
+@END
