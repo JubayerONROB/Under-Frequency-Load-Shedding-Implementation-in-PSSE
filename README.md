@@ -1,5 +1,8 @@
 # Underfrequency Load Shedding Implementation in PSSE
 
+## uploaded file's overview is here📜
+ 🗂️[Project Structure](#project-structure)
+
 ## Abstract
 
 Underfrequency Load Shedding (UFLS) is a critical mechanism in power systems to prevent widespread blackouts by shedding loads when the frequency drops below a certain threshold. This project focuses on implementing UFLS using Power System Simulation (PSS/E).
@@ -28,14 +31,32 @@ These advancements contribute to the overall effectiveness and efficiency of the
 
 ## Project Structure
 
-### Uploaded Folders:
+### 📁 Uploaded Folders:
 
-1. **1.IEEE24_jconto_bus_system**: Contains the `sav`, `dyr`, and documentation files for the 24-bus system.
-2. **2.IEEE24_abnormal**: Contains the `sav`, `dyr`, `out`, and `xlsx` files for abnormal conditions, such as disconnecting one or multiple generators, buses, or lines. This folder also includes the `abnormal.py` script for automation through code.
-3. **3.IEEE24_loadshedding**: Contains the `sav`, `dyr`, `out`, and `xlsx` files for after load shedding. This folder also includes the `loadsheddiing.py` script for automation.
+1. **1.IEEE24_jconto_bus_system**: Contains the following files:
+    - `sav` files: Save case files for the 24-bus system.
+    - `dyr` files: Dynamics data files.
+    - 📄 Documentation: Detailed documentation of the 24-bus system.
 
-### Project Report:
-- The `Under Frequency Load Shedding Implementation.pdf` file contains the detailed project report.
+2. **2.IEEE24_abnormal**: Contains files for abnormal conditions, including:
+    - `sav` files: Save case files under abnormal conditions.
+    - `dyr` files: Dynamics data files under abnormal conditions.
+    - `out` files: Output files.
+    - `xlsx` files: Excel files with data and results.
+    - 📝 `abnormal.py`: Script for automating abnormal condition scenarios.
+
+3. **3.IEEE24_loadshedding**: Contains files for post-load shedding scenarios, including:
+    - `sav` files: Save case files after load shedding.
+    - `dyr` files: Dynamics data files after load shedding.
+    - `out` files: Output files.
+    - `xlsx` files: Excel files with data and results.
+    - 📝 `loadshedding.py`: Script for automating load shedding scenarios.
+
+### 📑 Project Report
+
+- **Under Frequency Load Shedding Implementation.pdf**: Contains the detailed project report.
+
+
 
 ## Notes
 
